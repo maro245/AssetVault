@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>MRC_VCore_Telephone</defName> <!-- def名 -->
+    <label>telephone</label> <!-- 名前 -->
+    <description>hoge hoge...</description> <!-- 要修正 説明 -->
+    <graphicData>
+      <texPath>Things/Building/Joy/Telephone/Telephone</texPath> <!-- テクスチャ -->
+      <graphicClass>Graphic_Multi</graphicClass>
+	  <!-- <damageData>
+        <rect>(0,0,0.36,0.21)</rect> 要検証 サイズ横0.36 縦0.21
+      </damageData> -->
+      <shadowData>
+        <volume>(0.36, 0.8, 0.21)</volume> <!-- 影サイズ横0.36 高さ0.8 縦0.21 -->
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>BuildingOnTop</altitudeLayer> <!-- 建物レイヤ 建物の上 -->
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <rotatable>true</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <fillPercent>0.40</fillPercent>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <statBases>
+      <WorkToBuild>10000</WorkToBuild>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>14</Mass>
+      <Flammability>1.0</Flammability>
+      <JoyGainFactor>1.2</JoyGainFactor>
+    </statBases>
+    <costList> <!-- 要修正 コスト -->
+      <Steel>80</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <pathCost>0</pathCost> <!-- 移動経路計算 -->
+    <passability>Standable</passability> <!-- タイル上に立ち止まることができる -->
+    <defaultPlacingRot>North</defaultPlacingRot> <!-- デフォルトでNorth向き -->
+	<overrideMinifiedRot>North</overrideMinifiedRot> <!-- デフォルトでNorth向き -->
+    <minifiedDrawOffset>(0, 0, 0.2)</minifiedDrawOffset> <!-- 要検証 -->
+    <building>
+      <joyKind>Social</joyKind> <!-- 娯楽種別 社交 -->
+      <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
+      <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
+      <watchBuildingStandDistanceRange>1</watchBuildingStandDistanceRange> <!-- 建物と同じタイルで使用できる -->
+      <watchBuildingStandRectWidth>1</watchBuildingStandRectWidth> <!-- 建物と同じタイルで使用できる(横幅1) -->
+      <effectWatching>WatchingTelevision</effectWatching> <!-- 要検証 -->
+	  <destroySound>BuildingDestroyed_Metal_Small</destroySound> <!-- 破壊音 -->
+	  <isEdifice>false</isEdifice> <!-- 壁掛け? -->
+	  <isAttachment>true</isAttachment> <!-- 壁掛け? -->
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li> <!-- 壁掛け -->
+      <li>PlaceWorker_WatchArea</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>10</basePowerConsumption> <!-- 消費電力量 -->
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <tradeTags>
+      <li>Television</li>
+    </tradeTags>
+    <constructEffect>ConstructMetal</constructEffect>
+	<terrainAffordanceNeeded IsNull="True" /> <!-- 土台不要 -->
+    <designationCategory>Joy</designationCategory>
+    <designationHotKey>Misc4</designationHotKey>
+    <researchPrerequisites><li>TubeTelevision</li></researchPrerequisites> <!-- 要修正 必須研究 -->
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <uiIconScale>1.0</uiIconScale> <!-- UIアイコン拡大率 --> <!-- 要検証 -->
+  </ThingDef>
+</Defs>

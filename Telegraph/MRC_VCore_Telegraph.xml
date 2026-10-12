@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>MRC_VCore_Telegraph</defName> <!-- def名 -->
+    <label>telegraph</label> <!-- 名前 -->
+    <description>hoge hoge...</description> <!-- 要修正 説明 -->
+    <thingClass>Building_CommsConsole</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Misc/Telegraph/Telegraph</texPath> <!-- テクスチャ -->
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize> <!-- テクスチャサイズ2x2 -->
+      <damageData>
+        <rect>(0,0,0.7,0.32)</rect> <!-- 横0.7、縦0.32 -->
+      </damageData>
+      <shadowData>
+        <volume>(0.7,0.2,0.32)</volume> <!-- 横0.7、縦0.32 -->
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer> <!-- 建物レイヤ 建物 -->
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+	<defaultPlacingRot>South</defaultPlacingRot> <!-- デフォルトでSouth向き -->
+	<overrideMinifiedRot>South</overrideMinifiedRot> <!-- デフォルトでSouth向き -->
+    <blockWind>false</blockWind> <!-- 風力の邪魔をしない -->
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones> <!-- 使用タイルはゾーンと重複できない -->
+	<rotatable>true</rotatable> <!-- 回転可 -->
+	<minifiedDef>MinifiedThing</minifiedDef> <!-- minify -->
+	<thingCategories> <!-- 建築タブ? -->
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>2200</WorkToBuild>
+      <Flammability>0.6</Flammability>
+	  <Mass>10</Mass> <!-- 重量 -->
+    </statBases>
+    <size>(1,1)</size> <!-- 建物サイズ1x1 -->
+    <building>
+      <destroySound>BuildingDestroyed_Wood_Small</destroySound> <!-- 破壊音 -->
+    </building>
+    <costList> <!-- 要修正 コスト -->
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset> <!-- 使用タイルの位置 -->
+    <hasInteractionCell>true</hasInteractionCell>
+    <terrainAffordanceNeeded IsNull="True" /> <!-- 土台不要 -->
+    <designationCategory>Misc</designationCategory>
+	<designationCategory>Misc</designationCategory> <!-- カテゴリ -->
+    <uiOrder>2100</uiOrder>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>5</basePowerConsumption> <!-- 消費電力量 -->
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Usable" MayRequire="Ludeon.RimWorld.Biotech">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Summon diabolus threat</useLabel>
+        <useDuration>900</useDuration>
+        <floatMenuOptionPriority>SummonThreat</floatMenuOptionPriority>
+        <floatMenuFactionIcon>Mechanoid</floatMenuFactionIcon>
+        <ignoreOtherReservations>true</ignoreOtherReservations>
+      </li>
+      <li Class="CompProperties_Useable_CallBossgroup" MayRequire="Ludeon.RimWorld.Biotech">
+        <bossgroupDef>Diabolus</bossgroupDef>
+        <spawnLetterLabelKey>LetterLabelCommsConsoleSpawned</spawnLetterLabelKey>
+        <spawnLetterTextKey>LetterCommsConsoleSpawned</spawnLetterTextKey>
+        <effecterDef>CommsConsoleBossgroupSummoned</effecterDef>
+        <delayTicks>120</delayTicks>
+      </li>
+    </comps>
+    <designationHotKey>Misc3</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites> <!-- 要修正 必須研究 -->
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <tickerType MayRequire="Ludeon.RimWorld.Biotech">Normal</tickerType><!-- used by call bossgroup -->
+  </ThingDef>
+</Defs>
